@@ -1,17 +1,17 @@
-package id.sch.smktelkom_mlg.learn.recyclerview1;
+package id.sch.smktelkom_mlg.learn.recyclerview2;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import id.sch.smktelkom_mlg.learn.recyclerview1.adapter.HotelAdapter;
-import id.sch.smktelkom_mlg.learn.recyclerview1.model.Hotel;
+import id.sch.smktelkom_mlg.learn.recyclerview2.adapter.HotelAdapter;
+import id.sch.smktelkom_mlg.learn.recyclerview2.model.Hotel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
         mAdapter = new HotelAdapter(mList);
         recyclerView.setAdapter(mAdapter);
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         String[] arDeskripsi = resources.getStringArray(R.array.place_desc);
         TypedArray a = resources.obtainTypedArray(R.array.places_picture);
         Drawable[] arFoto = new Drawable[a.length()];
+
         for (int i = 0; i < arFoto.length; i++) {
             arFoto[i] = a.getDrawable(i);
         }
